@@ -1,0 +1,38 @@
+# Default configuration for Active Learning NLP experiments
+
+model:
+  name: "distilbert-base-uncased"
+  num_labels: 2
+  max_length: 512
+  device: "auto"
+
+training:
+  epochs_per_iteration: 3
+  learning_rate: 2e-5
+  batch_size: 16
+  validation_split: 0.2
+  early_stopping_patience: 3
+  weight_decay: 0.01
+  warmup_steps: 100
+
+active_learning:
+  num_iterations: 5
+  samples_per_iteration: 5
+  initial_labeled_size: 20
+  uncertainty_method: "entropy"
+
+data:
+  dataset_name: "imdb"
+  subset_size: 500
+  use_synthetic: false
+  random_seed: 42
+
+logging:
+  level: "INFO"
+  log_dir: "./logs"
+  log_steps: 10
+
+paths:
+  models_dir: "./models"
+  data_dir: "./data"
+  results_dir: "./results"
